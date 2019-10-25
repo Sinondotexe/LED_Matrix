@@ -39,7 +39,7 @@
 
  int config_debugging = 0; //ob im Debug Modus
  int config_LedTest = 0;   //Überschreibt programm mit LED test
- int MiliSeconds, Seconds, Minutes, Hours; //Rechenvariablen Zeit
+ int MiliSeconds, Seconds, Minutes, Hours; //Rechenvariablen Zeit    ***HIER mit wird UHR gesetz***
  int state_btn_startstop = 0, state_btn_startstop_old = 0;
  int state_btn_reset = 0, state_btn_reset_old = 0;
  int state_btn_clock = 2, state_btn_clock_old = 0;
@@ -106,8 +106,8 @@ void Matrix_Clock()
 	}
 	if(TimerValue == 0)
 	{
-      TimerInit(5,10,0); //1ms
-		//TimerInit(5,10000,0); //1sek
+      //TimerInit(5,10,0); //1ms
+		TimerInit(5,10000,0); //1sek
 	}	
 }
 
