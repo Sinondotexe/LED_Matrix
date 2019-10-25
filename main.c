@@ -89,24 +89,25 @@ void Matrix_Clock()
 	if(TimerOverrun == 1)
 	{
 		Seconds++;
-		if((Seconds%60) == 0)
+		if(Seconds == 60)
 		{
 			Seconds = 0;
 			Minutes++;			
 		}
-		if((Minutes%60) == 0)
+		if(Minutes == 60)
 		{
 			Minutes = 0;
 			Hours++;			
 		}
-		if((Hours%24) == 0)
+		if(Hours == 24)
 		{
 			Hours = 0;
 		}		
 	}
 	if(TimerValue == 0)
 	{
-		TimerInit(5,10000,0); //1sek
+      TimerInit(5,10,0); //1ms
+		//TimerInit(5,10000,0); //1sek
 	}	
 }
 
@@ -183,18 +184,19 @@ void Matrix_Debug_Mode()
 			textxy("Startstop is pressed", 0, 122, BRIGHT_CYAN, BLACK);
 		break;
 	}
-
 		if(getTSCx() <= 320)      
          {
            printDec(5, getTSCx());        //schreibe x aus (zum test) 
-
    
          }     // grenze Bereich für Rückgabewerte ein und gib sie aus.
 			if(getTSCy() <= 320)
          {
            printDec(5, getTSCy());          //schreibe y aus, (zum test)
-
          }
+         printAt(9, "");
+         printDec(2, Hours);
+         printDec(3, Minutes);
+         printDec(3, Seconds);
 }
 
 void Matrix_GUI_Touch(void)	//Touch erkennung
